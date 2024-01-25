@@ -6,8 +6,10 @@ export enum MapTile {
   FLOOR = 2,
 }
 
+type Map = MapTile[][]
+
 export const useMapStore = defineStore('map', () => {
-  const map = [
+  let map = [
     [1, 1, 1, 1, 1, 1, 1],
     [1, 2, 2, 2, 2, 2, 1],
     [1, 1, 2, 1, 2, 1, 1],
@@ -17,20 +19,12 @@ export const useMapStore = defineStore('map', () => {
     [1, 1, 1, 1, 1, 1, 1],
   ]
 
-  const boundary = () => {
-    const arr: number[][] = []
-    map.map((row, x) => {
-      row.map((col, y) => {
-        if (col === 1) {
-          arr.push([y, x])
-        }
-      })
-    })
-    return arr
+  const setupMap = (newMap: Map) => {
+    map.splice(0, map.length, ...newMap)
   }
 
   return {
     map,
-    boundary
+    setupMap
   }
 })
