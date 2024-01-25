@@ -1,4 +1,6 @@
 # Sokoban
+![](./src/assets/player.png)
+
 本项目是一个学习项目，是跟着哔哩哔哩@[阿崔cxr](https://www.bilibili.com/video/BV1Bw411K7qf)的视频学习的
 
 如果你也想学习的话，可以[关注UP主](https://space.bilibili.com/175301983)，一起学习
