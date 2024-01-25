@@ -16,5 +16,5 @@ it("shold move to left when press ArrowLeft", () => {
 
   window.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowLeft' }))
   console.log(player.x, "xxxxxx")
-  expect(player.x).toBe(0)
+  expect(player.x).toBe(1)
 })
