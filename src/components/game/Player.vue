@@ -24,21 +24,13 @@ const useMove = () => {
 
   const deduce = (row: number = 0, col: number = 0) => {
     const { player } = usePlayerStore()
-    const { boundary } = useMapStore()
-    const wallArr = boundary()
-
-    let flag = true
+    const { map } = useMapStore()
     let x = player.x + row
     let y = player.y + col
-    
-    wallArr.forEach(item => {
-      if (item[0] === x && item[1] === y) {
-        flag = false
-      } else {
-        return
-      }
-    })
-    return flag
+    if (map[y][x] === 1) {
+      return false
+    }
+    return true
   }
 
   const handleKeyup = (e: KeyboardEvent) => {
