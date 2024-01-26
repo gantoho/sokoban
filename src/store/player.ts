@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { reactive } from 'vue'
-import { useMapStore, MapTile } from './map'
+import { useMapStore } from './map'
 
 export const usePlayerStore = defineStore('player', () => {
   const player = reactive({
@@ -8,12 +8,12 @@ export const usePlayerStore = defineStore('player', () => {
     y: 1
   })
 
-  const { map } = useMapStore()
+  const { isWall } = useMapStore()
 
   const deduce = (row: number = 0, col: number = 0) => {
     let x = player.x + row
     let y = player.y + col
-    if (map[y][x] === MapTile.WALL) {
+    if (isWall({x: y, y: x})) {
       return false
     }
     return true

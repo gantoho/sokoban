@@ -8,6 +8,11 @@ export enum MapTile {
 
 type Map = MapTile[][]
 
+interface Positioin {
+  x: number,
+  y: number,
+}
+
 export const useMapStore = defineStore('map', () => {
   let map = [
     [1, 1, 1, 1, 1, 1, 1],
@@ -23,8 +28,13 @@ export const useMapStore = defineStore('map', () => {
     map.splice(0, map.length, ...newMap)
   }
 
+  const isWall = (position: Positioin) => {
+    return map[position.y][position.x] === MapTile.WALL
+  }
+
   return {
     map,
-    setupMap
+    setupMap,
+    isWall
   }
 })
