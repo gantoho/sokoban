@@ -13,7 +13,7 @@ export const usePlayerStore = defineStore('player', () => {
   const deduce = (row: number = 0, col: number = 0) => {
     let x = player.x + row
     let y = player.y + col
-    if (isWall({x: y, y: x})) {
+    if (isWall({x: x, y: y})) {
       return false
     }
     return true

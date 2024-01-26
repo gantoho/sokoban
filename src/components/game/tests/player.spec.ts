@@ -13,7 +13,7 @@ it("shold move to left when press ArrowLeft", () => {
   const { setupMap } = useMapStore()
   const newMap = [
     [1, 2, 1],
-    [2, 2, 2],
+    [1, 2, 2],
     [1, 2, 1],
   ]
   setupMap(newMap)
@@ -21,5 +21,5 @@ it("shold move to left when press ArrowLeft", () => {
   player.y = 1
   useMove()
   window.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowLeft' }))
-  expect(player.x).toBe(0)
+  expect(player.x).toBe(1)
 })

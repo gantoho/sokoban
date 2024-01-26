@@ -12,6 +12,7 @@ import Game from './components/game/Game.vue'
 .app {
   min-height: 100vh;
   background-color: #000;
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;

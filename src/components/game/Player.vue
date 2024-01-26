@@ -1,22 +1,11 @@
 <script setup lang='ts'>
-import { computed, onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import playerImg from '../../assets/player.png'
 import { usePlayerStore } from '../../store/player'
+import { usePosition } from '../../composables/usePosition'
 
-const usePosition = () => {
-  const { player } = usePlayerStore()
-  const STEP = 60
-  const position = computed(() => {
-    return {
-      top: STEP * player.y + "px",
-      left: STEP * player.x + "px"
-    }
-  })
-  return {
-    position
-  }
-}
-const { position } = usePosition()
+const { player } = usePlayerStore()
+const { position } = usePosition(player)
 
 const useMove = () => {
   const { movePlayerToTop, movePlayerToBottom, movePlayerToLeft, movePlayerToRight } = usePlayerStore()
@@ -62,6 +51,7 @@ useMove()
 <style lang='scss' scoped>
 .player {
   position: absolute;
+  z-index: 99;
   img {
     width: 60px;
     height: 60px;
